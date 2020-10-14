@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Digital Clock || WLiT</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body{
+        height: 100%;
+        width: 100%;
+    }
+
+    footer{
+        font-family: 'Share Tech Mono', monospace;
+        text-align: center;  
+        font-size: 12px;
+    }
+    .container{
+        font-family: 'Share Tech Mono', monospace;
+        text-align: center;
+    }
+
+    #date{
+        letter-spacing: 0.1em;
+        font-size: 24px;
+    }
+
+    #time{
+        letter-spacing: 0.05em;
+        font-size: 80px;
+        padding: 5px 0;
+    }
+
+    .quote{
+        letter-spacing: 0.1em;
+        font-size: 12px;
+        padding: 20px 0 0;
+    }
+
+</style>
+
+</head>
+
+<body onload="refreshClock()">
+
+    <div class="container">
+
+        <p id="date"></p>
+        <p id="time"></p>
+        <p class = "quote">Don't just train your mind, make it learn.</p>
+
+    </div>  
+    
+    <footer>
+        <p>Developed by Sasmita Gurung.</p>
+    </footer>
+        
+</body>
+
+<script>
+        var week = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+    
+        function refreshClock() {
+            var data = new Date();
+            var hrs = data.getHours();
+            var mins = data.getMinutes();
+            var sec = data.getSeconds();
+            mins = checkTime(mins);
+            sec = checkTime(sec);
+    
+            var fulldate = data.getFullYear();
+            var month = data.getMonth();
+            var day = week[data.getDay()];
+            month = checkTime(month);
+    
+            document.getElementById('date').innerHTML = fulldate + "-" + month + "-" + day;
+            document.getElementById('time').innerHTML = hrs + ":" + mins + ":" + sec;
+    
+            var t = setTimeout(refreshClock, 500);
+        }
+        function checkTime(i) {
+            if (i < 10) {i = "0" + i};
+            return i;
+        }
+    
+    </script>
+
+</html>
